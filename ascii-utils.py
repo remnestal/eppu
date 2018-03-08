@@ -8,7 +8,7 @@ def binarystringtoascii(binstring):
 	# Convert from string to int and then to the corresponding ascii
 	byteregex = re.compile("[01]{8}")
 	if (not byteregex.match(binstring)):
-		raise InvalidArgumentException("String does not match [01]{8}")
+		raise ValueError("String does not match [01]{8}")
 
 	return str(chr(int(binstring, base=2)))
 
