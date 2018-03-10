@@ -14,7 +14,7 @@ class App(object):
     def run(self):
         # file name required
         if len(sys.argv) < 2:
-            self.signals.quit('No file specified')
+            self.signals.exit.crash('No file specified')
 
         # Clear screen at startup
         self.stdscr.clear()
