@@ -64,4 +64,16 @@ class App(object):
                     elif char == ' ': self.stdscr.addstr(y + offset_y, x + offset_x, '%', curses.color_pair(3))
 
 if __name__ == "__main__":
-    curses.wrapper(App().start)
+    # require python3
+    if (sys.version_info > (3, 0)):
+        curses.wrapper(App().start)
+    else:
+        # please get python3 and let python2 rest in peace
+        sys.exit((
+            "I'd just like to interject for a moment. What you're referring to as Python2, is\n"
+            "in fact, Python3, or as I've recently taken to calling it, Python3 plus Python2.\n"
+            "Python2 is no longer a python version unto itself, but rather another free component\n"
+            "of a fully functioning Python3 system made useful by the Python3 corelibs, shell\n"
+            "utilities and vital system components comprising a full version as defined by POSIX.\n\n"
+            "This application is specifically made to be incompatible with python2."
+        ))
