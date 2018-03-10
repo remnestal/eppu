@@ -45,8 +45,8 @@ def __readfile(path=''):
         return list()
 
 def __splash(stdscr, height, width):
-    offset_y = int((height-24)/2)
-    offset_x = int((width-80)/2)
+    offset_y = int((height-20)/2)
+    offset_x = int((width-60)/2)
     with open('flag') as fp:
         for y, line in enumerate(fp):
             for x, char in enumerate(line):
