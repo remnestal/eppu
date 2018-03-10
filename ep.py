@@ -1,17 +1,20 @@
 import curses
-import sys
 import os
+import sys
+
+import controlflow
 
 class App(object):
 
     def start(self, stdscr):
         self.stdscr = stdscr
+        self.signals = controlflow.Signals(self)
         self.run()
 
     def run(self):
         # file name required
         if len(sys.argv) < 2:
-            sys.exit('No file specified.')
+            self.signals.quit('No file specified')
 
         # Clear screen at startup
         self.stdscr.clear()
