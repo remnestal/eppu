@@ -11,16 +11,17 @@ class Keyboard(object):
     def next_ascii():
         pass
 
-    def __next_sequence(self):
-        """ Get the next key sequence """
-        key_sequence = [False] * len(literals)
+    def _next_sequence(self):
+        """ Get the next key sequence entered by the user """
+        key_sequence = [False] * len(self.__key_literals)
         while True:
             try:
-                key = stdscr.getkey()
-                if key == __panic_button:
+                key = self.stdscr.getkey()
+                if key == self.__panic_button:
+                    # submit sequence when the panic button is pressed
                     return key_sequence
                 else:
-                    index = literals.index(key)
+                    index = self.__key_literals.index(key)
                     key_sequence[index] = not key_sequence[index];
             except:
                 pass
