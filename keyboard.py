@@ -8,8 +8,10 @@ class Keyboard(object):
     def __init__(self, stdscr):
         self.stdscr = stdscr
 
-    def next_ascii():
-        pass
+    def next_ascii(self):
+        """ Returns the next ascii code submitted by the user """
+        sequence = self._next_sequence()
+        return chr(sum(2**i for i, bit in enumerate(sequence) if bit))
 
     def _next_sequence(self):
         """ Get the next key sequence entered by the user """
