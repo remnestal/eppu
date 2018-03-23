@@ -21,8 +21,13 @@ class Window(object):
 
     def __init_textbox(self):
         """ initializes the text-box screen """
-        pass
+        assert(self.__stdscr)
+        self._textbox = self.__stdscr.subwin(self.height - 1, self.width, 0, 0)
+        self._textbox.border()
+        self._textbox.addstr('textbox')
 
     def __init_cmdline(self):
         """ initializes the command-line screen """
-        pass
+        assert(self.__stdscr)
+        self._cmdline = self.__stdscr.subwin(1, self.width, self.height - 1, 0)
+        self._cmdline.addstr('cmdline')
