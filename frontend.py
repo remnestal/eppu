@@ -8,26 +8,28 @@ class Window(object):
             _cmdline    - sub-screen for the command line interface
     """
 
-    def __init__(self, stdscr):
-        self.__init_stdscr(stdscr)
-        self.__init_textbox()
-        self.__init_cmdline()
+    _cmdline_height = 1
 
-    def __init_stdscr(self, stdscr):
+    def __init__(self, stdscr):
+        self._init_stdscr(stdscr)
+        self._init_textbox()
+        self._init_cmdline()
+
+    def _init_stdscr(self, stdscr):
         """ initializes the main screen """
         self.__stdscr = stdscr
         self.__stdscr.clear()
         self.height, self.width = self.__stdscr.getmaxyx()
 
-    def __init_textbox(self):
+    def _init_textbox(self):
         """ initializes the text-box screen """
         assert(self.__stdscr)
-        self._textbox = self.__stdscr.subwin(self.height - 1, self.width, 0, 0)
+        self._textbox = self.__stdscr.subwin(self.height - self._cmdline_height, self.width, 0, 0)
         self._textbox.border()
         self._textbox.addstr('textbox')
 
-    def __init_cmdline(self):
+    def _init_cmdline(self):
         """ initializes the command-line screen """
         assert(self.__stdscr)
-        self._cmdline = self.__stdscr.subwin(1, self.width, self.height - 1, 0)
+        self._cmdline = self.__stdscr.subwin(self._cmdline_height, self.width, self.height - 1, 0)
         self._cmdline.addstr('cmdline')
