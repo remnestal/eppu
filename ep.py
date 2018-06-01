@@ -3,7 +3,7 @@ import os
 import sys
 
 import controlflow
-from window import Window
+from frontend import Window
 
 class App(object):
 
